@@ -33,3 +33,5 @@ if (scoreDolphins > scoreKoalas) {
 } else {
   console.log(`Both win the trophy with an average score of ${scoreDolphins}`);
 }
+
+console.log(275 * 0.15);
