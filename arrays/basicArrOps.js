@@ -31,3 +31,9 @@ console.log(friends.indexOf("Bob")); // -1
 // includes method returns a boolean value if the element is in the array or not in the array (true or false)
 console.log(friends.includes("Steven")); // true
 console.log(friends.includes("Bob")); // false
+
+if (friends.includes("Steven")) {
+  console.log("You have a friend called Steven");
+} else {
+  console.log("You do not have a friend called Steven");
+}
