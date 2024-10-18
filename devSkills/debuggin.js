@@ -1,4 +1,4 @@
-Debugging;
+// Debugging;
 
 const measureKelvin = function () {
   const measurement = {

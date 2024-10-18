@@ -2,29 +2,29 @@
 
 // Debugging
 
-// const measureKelvin = function () {
-//   const measurement = {
-//     typeof: "temp",
-//     unit: "celsius",
+const measureKelvin = function () {
+  const measurement = {
+    typeof: "temp",
+    unit: "celsius",
 
-//     // C) FIX THE BUG
-//     // value: Number(prompt("Degrees celsius:")),
-//   };
+    // C) FIX THE BUG
+    // value: Number(prompt("Degrees celsius:")),
+  };
 
-//   // console.log(measurement);
-//   // B) FIND THE BUG
-//   console.table(measurement);
+  // console.log(measurement);
+  // B) FIND THE BUG
+  console.table(measurement);
 
-//   // console.log(measurement.value);10
+  // console.log(measurement.value);10
 
-//   // console.warn(measurement.value);
-//   // console.error(measurement.value);
+  // console.warn(measurement.value);
+  // console.error(measurement.value);
 
-//   const kelvin = measurement.value + 273;
-//   return kelvin;
-// };
-// // A) IDENTIFY BUG
-// console.log(measureKelvin());
+  const kelvin = measurement.value + 273;
+  return kelvin;
+};
+// A) IDENTIFY BUG
+console.log(measureKelvin());
 
 // // Using a debugger
 // const calcTempAmplitudeBug = function (t1, t2) {
