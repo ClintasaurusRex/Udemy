@@ -23,22 +23,35 @@ console.log(document.querySelector('.guess').value);
 // Event Listener: A function that performs an action based on a certain event. It waits for a specific event to happen
 // The first argument is the event that the function is waiting for and the second argument is the function that will be called when the event happens (callback function)
 
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
-
-document.querySelector('.number').textContent = secretNumber;
+let highScore = 0;
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess, typeof guess);
 
+  // When there is no input
   if (!guess) {
     document.querySelector('.message').textContent = 'Pick a number';
+    // When player wins
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = 'Correct Number!';
     score++;
     document.querySelector('.score').textContent = score;
+
+    document.querySelector('.number').textContent = secretNumber;
+    document.querySelector('body').style.backgroundColor = '#60b347';
+
+    // Update high score if the current score is greater
+    if (score > highScore) {
+      highScore = score;
+      document.querySelector('.highscore').textContent = highScore;
+    }
+
+    document.querySelector('.number').style.width = '30rem';
   } else if (guess > secretNumber) {
+    // When guess is too high
     if (score > 1) {
       document.querySelector('.message').textContent = 'Too High';
       score = score - 1;
@@ -47,6 +60,8 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.message').textContent = 'YOU LOST THE GAME';
       document.querySelector('.score').textContent = 0;
     }
+
+    // When guess is too low
   } else if (guess < secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = 'Too Low';
@@ -57,4 +72,17 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  score = 20;
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.guess').value = '';
+
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '15rem';
 });
