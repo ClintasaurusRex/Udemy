@@ -18,12 +18,27 @@ const closeModal = function () {
   overlay.classList.add('hidden');
 };
 
-btnCloseModal.addEventListener('click', closeModal); // dont put () otherwise the close modal gets invoked immiedatly
-overlay.addEventListener('click', closeModal);
-
 for (let i = 0; i < btnsOpenModal.length; i++) {
   btnsOpenModal[i].addEventListener('click', openModal);
 }
+
+btnCloseModal.addEventListener('click', closeModal); // dont put () otherwise the close modal gets invoked immiedatly
+overlay.addEventListener('click', closeModal);
+
+// Keypress events
+
+document.addEventListener('keydown', function (e) {
+  // console.log('A key was pressed');
+  console.log(e.key); // this pulls what key was pressed in the object that is the event
+
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
+  }
+
+  // if (e.key === 'Escape') {
+  //   console.log('Esc was pressed');
+  // }
+});
 
 // The code on how we got to this point above
 
