@@ -208,3 +208,66 @@
 // -------------------------------Regular vs Arrow end
 
 // --------------------------Memory Management: Primitives vs objects
+// How memory is managed in JavaScript
+// Memory heap: Where memory allocation happens (store variables) - where the data is stored
+// Call stack: Where the code is executed (store the code)
+
+// Primitives: Numbers, strings, booleans, undefined, null, symbol, bigInt
+// Objects: Arrays, objects, functions
+
+// Primitives are stored in the call stack and objects are stored in the heap
+// object reference is stored in the call stack and the object itself is stored in the heap
+
+// -----------------------------Object referances (shallow and deep copies)
+
+const kristin1 = {
+  firstName: 'Kristin',
+  lastName: 'Arneson',
+  age: 32,
+};
+
+function marryPerson(originalPerson, newLastName) {
+  originalPerson.lastName = newLastName;
+  return originalPerson;
+}
+
+const marriedKristin = marryPerson(kristin1, 'Arneson-Hiles');
+
+// const marriedKristin = kristin1; // this doesnt create a copy
+// marriedKristin.lastName = 'Arneson-Hiles';
+
+console.log('Before:', kristin1);
+console.log('After:', marriedKristin);
+
+// How to create a true copy of the object using spread operator
+
+const kristin = {
+  firstName: 'Kristin',
+  lastName: 'Arneson',
+  age: 32,
+  family: ['Karen', 'Brent'],
+};
+
+// Shallow copy
+const kristinCopy = { ...kristin }; // this only copies the first 3 in kristin not the nested family object
+kristinCopy.lastName = 'Arneson-Hiles';
+
+console.log(kristin, kristinCopy);
+
+// kristinCopy.family.push('Lyndsey');
+// kristinCopy.family.push('Maria');
+
+// // This will add to both arrays
+// console.log('Before:', kristin);
+// console.log('After:', kristinCopy);
+
+// Deep copy or Deep Clone same ting
+
+const kristinClone = structuredClone(kristin);
+kristinClone.family.push('Lyndsey');
+kristinClone.family.push('Maria');
+
+console.log('Before clone:', kristin);
+console.log('After clone:', kristinClone);
+
+// -----------------------------Object referances (shallow and deep copies)END
