@@ -41,3 +41,5 @@ function calcAge(birthYear) {
 const firstName = 'Clint';
 calcAge(1992);
 console.log('hello');
+
+// Scoping Practice script end
