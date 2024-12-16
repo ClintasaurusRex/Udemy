@@ -53,51 +53,96 @@
 //   }
 // });
 
-// Scoping Practice script end
+// Scoping Practice script end ---------------------------------------------------
 
-// Variables
+// --------------------------------------Variables
 
-console.log(me);
-// console.log(job);
-// console.log(year);
+// console.log(me);
+// // console.log(job);
+// // console.log(year);
 
-var me = 'Clint';
-let job = 'student';
-const year = 1992;
+// var me = 'Clint';
+// let job = 'student';
+// const year = 1992;
 
-console.log(addDecl(2, 3));
-console.log(addArrow);
-// console.log(addExpr(2, 2));
-// console.log(addArrow(1, 2));
+// console.log(addDecl(2, 3));
+// console.log(addArrow);
+// // console.log(addExpr(2, 2));
+// // console.log(addArrow(1, 2));
 
-//functions
-function addDecl(a, b) {
-  return a + b;
-}
+// //functions
+// function addDecl(a, b) {
+//   return a + b;
+// }
 
-const addExpr = function (a, b) {
-  return a + b;
-};
+// const addExpr = function (a, b) {
+//   return a + b;
+// };
 
-var addArrow = (a, b) => a + b;
+// var addArrow = (a, b) => a + b;
 
-// Example when hoisting goes wrong
+// // Example when hoisting goes wrong
 
-console.log(undefined);
-if (!numProducts) deleteShoppingCart();
+// console.log(undefined);
+// if (!numProducts) deleteShoppingCart();
 
-var numProducts = 10;
+// var numProducts = 10;
 
-function deleteShoppingCart() {
-  console.log('All products deleted');
-}
+// function deleteShoppingCart() {
+//   console.log('All products deleted');
+// }
 
-var x = 1;
-let y = 2;
-const z = 3;
+// var x = 1;
+// let y = 2;
+// const z = 3;
 
-console.log(x === window.x);
-console.log(x === window.y);
-console.log(x === window.z);
+// console.log(x === window.x);
+// console.log(x === window.y);
+// console.log(x === window.z);
 
 // Varibales End
+
+// --------------------------------The This Keyword
+
+// The this keyword/variable: Special variable that is created for every execution context (every function)
+// Takes the value of (points to) the "owner" of the function in which the this keyword is used (this is not static)
+// The value of this is not static, it depends on how the function is called, and its value is only assigned when the function is actually called (runtime)
+
+// Method -> this = <Object that is calling the method>
+// a method is a function that is a property of an object
+
+// console.log(this);
+
+const calcAge = function (birthYear) {
+  console.log(2037 - birthYear);
+  // console.log(this);
+};
+
+calcAge(1992);
+
+const calcAgeArrow = birthYear => {
+  console.log(2037 - birthYear);
+  // console.log(this);
+};
+
+calcAgeArrow(1980);
+
+const clint = {
+  name: 'clint',
+  year: 1992,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+  },
+};
+clint.calcAge();
+
+const kritin = {
+  year: 2017,
+};
+
+kritin.calcAge = clint.calcAge; // This copies the calcAge into the kristin object (method borrowing)
+kritin.calcAge();
+
+const f = clint.calcAge;
+f();
