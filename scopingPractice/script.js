@@ -75,6 +75,7 @@
 //   return a + b;
 // }
 
+// arguments keyword
 // const addExpr = function (a, b) {
 //   return a + b;
 // };
@@ -113,36 +114,97 @@
 
 // console.log(this);
 
-const calcAge = function (birthYear) {
-  console.log(2037 - birthYear);
-  // console.log(this);
-};
+// const calcAge = function (birthYear) {
+//   console.log(2037 - birthYear);
+//   // console.log(this);
+// };
 
-calcAge(1992);
+// calcAge(1992);
 
-const calcAgeArrow = birthYear => {
-  console.log(2037 - birthYear);
-  // console.log(this);
-};
+// const calcAgeArrow = birthYear => {
+//   console.log(2037 - birthYear);
+//   // console.log(this);
+// };
 
-calcAgeArrow(1980);
+// calcAgeArrow(1980);
 
-const clint = {
-  name: 'clint',
-  year: 1992,
-  calcAge: function () {
-    console.log(this);
-    console.log(2037 - this.year);
-  },
-};
-clint.calcAge();
+// const clint = {
+//   name: 'clint',
+//   year: 1992,
+//   calcAge: function () {
+//     console.log(this);
+//     console.log(2037 - this.year);
+//   },
+// };
+// clint.calcAge();
 
-const kritin = {
-  year: 2017,
-};
+// const kritin = {
+//   year: 2017,
+// };
 
-kritin.calcAge = clint.calcAge; // This copies the calcAge into the kristin object (method borrowing)
-kritin.calcAge();
+// kritin.calcAge = clint.calcAge; // This copies the calcAge into the kristin object (method borrowing)
+// kritin.calcAge();
 
-const f = clint.calcAge;
-f();
+// const f = clint.calcAge;
+// f();
+
+//------------------------------------ This keyword end
+
+//------------------------------------ Regular vs Arrow functions
+
+// const clint = {
+//   firstName: 'Clint',
+//   year: 1992,
+//   calcAge: function () {
+//     // console.log(this);
+//     console.log(2037 - this.year);
+
+//     // Solution 1
+//     // const self = this; // self or that
+//     // const isMillenial = function () {
+//     //   console.log(self);
+//     //   console.log(self.year >= 1981 && self.year <= 1996);
+//     // };
+//     // //   console.log(this.year >= 1981 && this.year <= 1996);
+//     // // };
+
+//     // Solution 2
+//     // The arrow function inherits the this keyword
+//     const isMillenial = () => {
+//       console.log(this);
+//       console.log(this.year >= 1981 && this.year <= 1996);
+//     };
+//     isMillenial();
+//   },
+
+//   // Wrong way - this comes up as undefined
+//   greet: () => console.log(`Hey ${this.firstName}`),
+
+//   // Right way
+//   // greet: function () {
+//   //   console.log(`Hey ${this.firstName}`);
+//   // },
+// };
+
+// clint.greet();
+// clint.calcAge();
+
+// // arguments keywork
+// const addExpr = function (a, b, c, d) {
+//   console.log(arguments);
+//   return console.log(a + b);
+// };
+// addExpr(2, 5);
+// addExpr(2, 5, 8, 12);
+
+// // argument keyword doesnt work with arrow functions
+
+// var addArrow = (a, b) => {
+//   console.log(arguments);
+//   return a + b;
+// };
+// // addArrow(2, 5, 8);
+
+// -------------------------------Regular vs Arrow end
+
+// --------------------------Memory Management: Primitives vs objects
