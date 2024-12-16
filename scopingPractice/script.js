@@ -43,3 +43,13 @@ calcAge(1992);
 console.log('hello');
 
 // Scoping Practice script end
+document.querySelector('h1').addEventListener('click', function () {
+  const h1 = document.querySelector('h1');
+  const greeting1 = 'How JavaScript Works Behind the Scenes';
+  const greeting2 = 'Javascript is amazing';
+  if (h1.textContent === greeting1) {
+    h1.textContent = greeting2;
+  } else {
+    h1.textContent = greeting1;
+  }
+});
