@@ -271,3 +271,23 @@ console.log('Before clone:', kristin);
 console.log('After clone:', kristinClone);
 
 // -----------------------------Object referances (shallow and deep copies)END
+
+// ----------------------------Memory management: Garbage Collection
+
+// The memory life cycle in JavaScript is managed automatically
+// The garbage collector removes the variables that are no longer needed in the memory heap (variables that are not reachable)
+
+// How is memory freed up after we no longer need a value? (Garbage collection)
+// 1. Remove a value from the memory heap (when the value is no longer needed)
+// 2. Remove a value from the call stack (when the function is done executing)
+// 3. Release memory that is no longer needed (when the value is no longer reachable)
+
+// mark and sweep algorithm - the garbage collector goes through the memory heap and marks the values that are still being used and then sweeps away the values that are not being used (removes them from the memory heap)
+
+// sweep phase - the garbage collector goes through the memory heap and removes the values that are not being used
+
+// Memory leak - when the garbage collector fails to remove a value from the memory heap that is no longer needed
+
+// Memory leak example - when we have a closure that is not being used but is still in the memory heap (the closure is still reachable) - this is a memory leak because the closure is still in the memory heap even though it is not being used (the closure is still reachable) - this is a memory leak because the closure is still in the memory heap even though it is not being used
+
+// ----------------------------Memory management: Garbage Collection END
