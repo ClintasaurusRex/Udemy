@@ -30,3 +30,4 @@ const yearsUntilRetirement = (birthYear, firstName) => {
 console.log(yearsUntilRetirement(1992, "Clint"));
 
 // Arrow functions are especially useful for one-liners. They are more concise and easier to read than function expressions. Arrow functions are also useful when working with higher-order functions, such as map, filter, and reduce.
+console.log("hello");
