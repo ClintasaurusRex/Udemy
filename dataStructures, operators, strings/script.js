@@ -47,48 +47,104 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
+
+  // orderDelivery: function (obj) {
+  //   console.table(obj);
+  // },
+
+  orderDelivery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    time = '20:00',
+    address,
+  }) {
+    console.log(
+      `Order received: ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
 };
 
+restaurant.orderDelivery({
+  time: '23:30',
+  address: 'Via del Sole, 21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
+restaurant.orderDelivery({
+  address: 'Via del Sole, 21',
+  starterIndex: 2,
+});
+
+// console.table(restaurant);
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
+
+// Default values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+
+// Mutating variables
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+({ a, b } = obj);
+console.log(a, b);
+
+// Nested Objects
+
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c);
+
 // Destructuring arrays
+/*
+// Destructuring Arrays: Destructuring is a way to unpack values from an array or an object into separate variables
+// Destructuring arrays like this is called destructuring assignment because we assign values to variables when we destructure an array or an object and we can also use destructuring to assign values to variables from nested arrays or objects
 
-// // Destructuring Arrays: Destructuring is a way to unpack values from an array or an object into separate variables
-// // Destructuring arrays like this is called destructuring assignment because we assign values to variables when we destructure an array or an object and we can also use destructuring to assign values to variables from nested arrays or objects
+const arr = [2, 3, 4];
+const a = arr[0];
+const b = arr[1];
+const c = arr[2];
 
-// const arr = [2, 3, 4];
-// const a = arr[0];
-// const b = arr[1];
-// const c = arr[2];
+const [x, y, z] = arr;
+console.log(x, y, z);
+console.log(c, b, a);
 
-// const [x, y, z] = arr;
-// console.log(x, y, z);
-// console.log(c, b, a);
+// The space between commas skips over the element in the middle of the array.object
+// Switching variables
 
-// // The space between commas skips over the element in the middle of the array.object
-// // Switching variables
+let [main, , secondary] = restaurant.categories;
+console.log(main, secondary);
 
-// let [main, , secondary] = restaurant.categories;
+// const temp = main;
+// main = secondary;
+// secondary = temp;
 // console.log(main, secondary);
 
-// // const temp = main;
-// // main = secondary;
-// // secondary = temp;
-// // console.log(main, secondary);
+[secondary, main] = [secondary, main];
+console.log(main, secondary);
 
-// [secondary, main] = [secondary, main];
-// console.log(main, secondary);
+// Receive 2 return values from a function
+const [starter, mainCourse] = restaurant.order(2, 0);
+console.log(starter, mainCourse);
 
-// // Receive 2 return values from a function
-// const [starter, mainCourse] = restaurant.order(2, 0);
-// console.log(starter, mainCourse);
+// Nested destructuring
+const nested = [2, 3, [5, 6]];
+// const [i, , j] = nested;
+// console.log(i, j);
+// Destructuring inside destructuring
+const [i, , [j, k]] = nested;
+console.log(i, j, k);
 
-// // Nested destructuring
-// const nested = [2, 3, [5, 6]];
-// // const [i, , j] = nested;
-// // console.log(i, j);
-// // Destructuring inside destructuring
-// const [i, , [j, k]] = nested;
-// console.log(i, j, k);
-
-// // Default values - if a value doesnt exist this gives it a default value
-// const [p = 1, q = 1, r = 1] = [8, 9];
-// console.log(p, q, r);
+// Default values - if a value doesnt exist this gives it a default value
+const [p = 1, q = 1, r = 1] = [8, 9];
+console.log(p, q, r);
+*/
