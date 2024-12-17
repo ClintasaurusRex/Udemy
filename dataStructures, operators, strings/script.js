@@ -62,8 +62,55 @@ const restaurant = {
       `Order received: ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
+  },
 };
 
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+console.log(...newArr);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+// Copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// Join 2 arrays
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+
+// Iterables: arrays, strings, maps, sets. NOT objects
+const str = 'Clint';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+
+// //////////////////////////Real world example
+// const ingredients = [
+//   prompt('Lets make pasta! Ingredient 1'),
+//   prompt('Ingredient 2'),
+//   prompt('Ingredient 3'),
+// ];
+// console.log(ingredients);
+// restaurant.orderPasta(...ingredients);
+
+// Objects
+const newResturant = { foundedIn: 1998, ...restaurant, founder: 'Rocky' };
+console.log(newResturant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
+
+/////////////////////////////////// Destructuing Objects
+/*
 restaurant.orderDelivery({
   time: '23:30',
   address: 'Via del Sole, 21',
@@ -103,8 +150,8 @@ const {
   fri: { open: o, close: c },
 } = openingHours;
 console.log(o, c);
-
-// Destructuring arrays
+*/
+// ------------------------------------- Destructuring arrays
 /*
 // Destructuring Arrays: Destructuring is a way to unpack values from an array or an object into separate variables
 // Destructuring arrays like this is called destructuring assignment because we assign values to variables when we destructure an array or an object and we can also use destructuring to assign values to variables from nested arrays or objects
