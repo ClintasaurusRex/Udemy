@@ -227,6 +227,7 @@ function printBookAuthorsCount(title, ...authors) {
   console.log(`The book "${title}" has ${authors.length} authors`);
 }
 printBookAuthorsCount("Algorithms", "Robert Sedgewick", "Kevin Wayne");
+
 /////////////////////////////// Spread operator
 /*
 const bookAuthors = [...books[0].author, ...books[1].author];
