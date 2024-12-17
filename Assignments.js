@@ -213,6 +213,18 @@ const books = [
   },
 ];
 
+/////////////////////////////// Spread operator
+
+const bookAuthors = [...books[0].author, ...books[1].author];
+console.log(bookAuthors);
+
+spell = "javascript";
+function spellWord(word) {
+  console.log(...word);
+}
+spellWord(spell);
+
+//////////////////////////////// Destructure arrays
 // const [firstBook, secondBook] = books;
 // console.log(firstBook, secondBook);
 
@@ -231,6 +243,8 @@ const books = [
 // const [fiveStarRatings, oneStarRatings, threeStarRatings = 0] = ratingStars;
 // console.log(ratingStars);
 
+////////////////////////////// Objects
+/*
 const { title, author, ISBN } = books[0];
 console.log(title, author, ISBN);
 
@@ -257,3 +271,4 @@ function printBookInfo({ title, author, year = "year unknown" }) {
   console.log(`${title} by ${author}, ${year}`);
 }
 printBookInfo({ title: "Algorithms", author: "Robert Sedgewick", year: "2011" });
+*/
