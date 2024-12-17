@@ -44,4 +44,51 @@ const restaurant = {
       close: 24,
     },
   },
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 };
+
+// Destructuring arrays
+
+// // Destructuring Arrays: Destructuring is a way to unpack values from an array or an object into separate variables
+// // Destructuring arrays like this is called destructuring assignment because we assign values to variables when we destructure an array or an object and we can also use destructuring to assign values to variables from nested arrays or objects
+
+// const arr = [2, 3, 4];
+// const a = arr[0];
+// const b = arr[1];
+// const c = arr[2];
+
+// const [x, y, z] = arr;
+// console.log(x, y, z);
+// console.log(c, b, a);
+
+// // The space between commas skips over the element in the middle of the array.object
+// // Switching variables
+
+// let [main, , secondary] = restaurant.categories;
+// console.log(main, secondary);
+
+// // const temp = main;
+// // main = secondary;
+// // secondary = temp;
+// // console.log(main, secondary);
+
+// [secondary, main] = [secondary, main];
+// console.log(main, secondary);
+
+// // Receive 2 return values from a function
+// const [starter, mainCourse] = restaurant.order(2, 0);
+// console.log(starter, mainCourse);
+
+// // Nested destructuring
+// const nested = [2, 3, [5, 6]];
+// // const [i, , j] = nested;
+// // console.log(i, j);
+// // Destructuring inside destructuring
+// const [i, , [j, k]] = nested;
+// console.log(i, j, k);
+
+// // Default values - if a value doesnt exist this gives it a default value
+// const [p = 1, q = 1, r = 1] = [8, 9];
+// console.log(p, q, r);
