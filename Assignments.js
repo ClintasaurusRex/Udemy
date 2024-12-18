@@ -1,3 +1,5 @@
+const { clearLine } = require("readline");
+
 const books = [
   {
     title: "Algorithms",
@@ -213,8 +215,68 @@ const books = [
   },
 ];
 
-////////////////////////////// REST operator
+/////////////////////// For of loop
 
+const allAuthors = [];
+
+for (const book of books) {
+  if (typeof book.author === "string") {
+    allAuthors.push(book.author);
+  } else {
+    for (const author of book.author) {
+      allAuthors.push(author);
+    }
+  }
+}
+// console.log(allAuthors);
+
+for (const [index, author] of allAuthors.entries()) {
+  console.log(`${index + 1}. ${author}`);
+}
+
+// let pageSum = 0;
+
+// for (let book of books) {
+//   pageSum += book.pages;
+//   console.log(`${book.title} has ${pageSum} pages`);
+// }
+
+/////////////////////// Logical operators
+// for (let i = 0; i < books.length; i++) {
+//   books[i].edition ||= 1;
+//   console.log(`Book "${books[i].title}" has edition: ${books[i].edition}`);
+// }
+
+// for (let i = 0; i < books.length; i++) {
+//   books[i].highlighted &&= !(books[i].thirdParty.goodreads.rating < 4.2);
+//   console.log(`Book: ${books[i].title}`);
+//   console.log(`Rating: ${books[i].thirdParty.goodreads.rating}`);
+//   console.log(`Highlighted: ${books[i].highlighted}`);
+//   console.log("-------------------");
+// }
+
+/////////////////////// NULLish operator
+
+/*
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent ?? console.log(`"${books[i].title} provides no online content`);
+}
+*/
+/////////////////////////// Short circuiting
+
+/*
+function hasExamplesInJava(book) {
+  return book.programmingLanguage === "Java" || "no data available";
+}
+console.log(hasExamplesInJava(books[0]));
+console.log(hasExamplesInJava(books[1]));
+
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent && console.log(`"${books[i].title}" privides onl`);
+}
+*/
+////////////////////////////// REST operator
+/*
 const [mainKeyword, ...rest] = books[0].keywords;
 console.log(mainKeyword);
 console.log(rest);
@@ -227,7 +289,7 @@ function printBookAuthorsCount(title, ...authors) {
   console.log(`The book "${title}" has ${authors.length} authors`);
 }
 printBookAuthorsCount("Algorithms", "Robert Sedgewick", "Kevin Wayne");
-
+*/
 /////////////////////////////// Spread operator
 /*
 const bookAuthors = [...books[0].author, ...books[1].author];

@@ -18,6 +18,63 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 
 GOOD LUCK 😀
 */
+
+// const [players1, players2] = game.players;
+// console.log(players1, players2);
+// console.log('-----------------2----------------');
+
+// const [gk, ...fieldPlayers] = players1;
+// console.log(gk, fieldPlayers);
+// console.log('---------------3------------------');
+
+// const allPlayers = [...players1, ...players2];
+// console.log(allPlayers);
+// console.log('-------------------4--------------');
+// const players1Final = [...players1, 'Poopy', 'Harry Dick', 'Huge Janus'];
+// console.log(players1Final);
+// console.log('--------------5-------------------');
+
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game;
+// console.log(team1, draw, team2);
+
+// console.log('--------------6-------------------');
+// const printGoals = function (...players) {
+//   console.log(`${players.length} goals were scored`);
+// };
+// printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+// printGoals('Davies', 'Muller');
+
+// console.log('--------------6-------------------');
+// printGoals(...game.scored);
+
+// console.log(...game.players);
+
+// console.log('--------------7-------------------');
+// team1 < team2 && console.log('Team 1 is more likely to win');
+
+/* 
+Let's continue with our football betting app!
+
+1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
+2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+      Odd of victory Bayern Munich: 1.33
+      Odd of draw: 3.25
+      Odd of victory Borrussia Dortmund: 6.5
+Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
+
+BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+      {
+        Gnarby: 1,
+        Hummels: 1,
+        Lewandowski: 2
+      }
+
+GOOD LUCK 😀
+*/
+
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -59,37 +116,30 @@ const game = {
   },
 };
 
-const [players1, players2] = game.players;
-console.log(players1, players2);
-console.log('-----------------2----------------');
+// 1.
+for (const [i, player] of game.scored.entries()) {
+  console.log(`Goal ${i + 1}: ${player}`);
+}
 
-const [gk, ...fieldPlayers] = players1;
-console.log(gk, fieldPlayers);
-console.log('---------------3------------------');
+// 2.
+const odds = Object.values(game.odds);
 
-const allPlayers = [...players1, ...players2];
-console.log(allPlayers);
-console.log('-------------------4--------------');
-const players1Final = [...players1, 'Poopy', 'Harry Dick', 'Huge Janus'];
-console.log(players1Final);
-console.log('--------------5-------------------');
+// const average = odds.reduce((acc, odd) => acc + odd, 0) / odds.length;
+// console.log(average);
 
-const {
-  odds: { team1, x: draw, team2 },
-} = game;
-console.log(team1, draw, team2);
+let average = 0;
+for (const odd of odds) average += odd;
+average /= odds.length;
+console.log(average);
 
-console.log('--------------6-------------------');
-const printGoals = function (...players) {
-  console.log(`${players.length} goals were scored`);
-};
-printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
-printGoals('Davies', 'Muller');
+// 3.
 
-console.log('--------------6-------------------');
-printGoals(...game.scored);
+for (const [team, odd] of Object.entries(game.odds)) {
+  console.log(team, odd);
+  const teamStr = team === 'x' ? 'draw' : `Victory ${game[team]}`;
+  console.log(`Odd of victory ${teamStr} ${odd}`);
+}
 
-console.log(...game.players);
-
-console.log('--------------7-------------------');
-team1 < team2 && console.log('Team 1 is more likely to win');
+// Odd of victory Bayern Munich: 1.33
+//       Odd of draw: 3.25
+//       Odd of victory Borrussia Dortmund: 6.5
