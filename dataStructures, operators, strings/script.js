@@ -1,5 +1,22 @@
 'use strict';
 
+const weekdays = ['mon', 'tues', 'wed', 'thurs', 'fri', 'sat', 'sun'];
+// you can change the days below in opening hours to [weekdays[3]: ]
+const openingHours = {
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 // Data needed for a later exercise
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
@@ -30,23 +47,32 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+  // ES6 enhanced object literals, if the object is outside you can bring it inside this way
+  openingHours,
+
+  // openingHours: {
+  //   thu: {
+  //     open: 12,
+  //     close: 22,
+  //   },
+  //   fri: {
+  //     open: 11,
+  //     close: 23,
+  //   },
+  //   sat: {
+  //     open: 0, // Open 24 hours
+  //     close: 24,
+  //   },
+  // },
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
+
+  // you can write methods like this
+
+  // order(starterIndex, mainIndex) {
+  //   return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  // },
 
   // orderDelivery: function (obj) {
   //   console.table(obj);
@@ -70,6 +96,52 @@ const restaurant = {
     console.log(otherIngrediants);
   },
 };
+
+///////////////////////////////// Optional Chaining
+
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon.open);
+
+///////////// With optional chaining
+
+// optional chaining is a way to access properties of an object that may or may not exist.
+// it is a way to avoid getting errors when accessing properties of an object that may not exist.
+// the ? mark is used to check if the property exists before accessing it. and if it does not exist, it will return undefined.
+// Checks if the value on the left exists
+
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours.fri?.open);
+
+// Example
+const days = ['mon', 'tues', 'wed', 'thurs', 'fri', 'sat', 'sun'];
+
+for (const day of days) {
+  console.log(day);
+  const open = restaurant.openingHours[day]?.open ?? `Closed`; // Nullish ?? operator
+  console.log(`On ${day}, we are open at ${open}`);
+}
+
+// Methods
+
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+console.log(restaurant.orderRissoto?.(0, 1) ?? 'Method does not exist');
+
+// Arrays
+
+const users = [
+  {
+    name: 'Clint',
+    email: 'hello@gmail.com',
+  },
+];
+console.log(users[0]?.name ?? 'User is an empty array');
+console.log(users[0]?.address ?? 'Does not exist');
+
+const user = [];
+console.log(user[0]?.name ?? 'Array is empty');
+
+// if (restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open);
+// if (restaurant.openingHours.fri) console.log(restaurant.openingHours.fri.open);
 
 //////////////////////////// The for of loop
 /*
