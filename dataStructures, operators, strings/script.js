@@ -72,7 +72,7 @@ const restaurant = {
 };
 
 //////////////////////////// The for of loop
-
+/*
 // The for of loops are used to iterate over arrays, strings, maps, sets, and other iterable objects.
 // It works by iterating over the values of an iterable object and executing a block of code for each value.
 // your can use break and continue statements in for of loops
@@ -94,6 +94,7 @@ for (const [i, el] of menu.entries()) {
 // the first value is the index and the second value is the value
 
 // console.log([...menu.entries()]);
+*/
 
 /////////////////////////// Logical assignment operator
 /*
