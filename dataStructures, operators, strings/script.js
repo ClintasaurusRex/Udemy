@@ -97,8 +97,41 @@ const restaurant = {
   },
 };
 
-/////////////////////////////// Looping Objects: Object Keys, Values and Entries
+/////////////////////////// SETS
 
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto', 'Pizza']);
+
+console.log(ordersSet);
+console.log(new Set('Clint'));
+console.log(ordersSet.size); // size not length in this case
+console.log(ordersSet.has('Pizza')); // use .has to find an element in a set
+console.log(ordersSet.has('Bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+// ordersSet.clear();
+console.log(ordersSet);
+
+for (const order of ordersSet) console.log(order);
+
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+
+const staffUnique = [...new Set(staff)]; // [] turns the set into an actual array
+console.log(staffUnique);
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+
+console.log(new Set('Clint Arneson-Hiles').size);
+
+// console.log(ordersSet);
+// for (const [i, set] of [...ordersSet].entries()) {
+//   console.log(`${i + 1}: ${set}`);
+// }
+
+/////////////////////////////// Looping Objects: Object Keys, Values and Entries
+/*
 // Property names: Object Keys loops only the keys of the object
 const properties = Object.keys(openingHours);
 console.log(properties);
@@ -126,7 +159,7 @@ for (const [key, { open, close }] of entries) {
   // On fri we open at 11 and close at 23
   // On sat we open at 0 and close at 24
 }
-
+*/
 /*
 ///////////////////////////////// Optional Chaining
 
