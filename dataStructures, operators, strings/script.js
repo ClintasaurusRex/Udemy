@@ -97,6 +97,37 @@ const restaurant = {
   },
 };
 
+/////////////////////////////// Looping Objects: Object Keys, Values and Entries
+
+// Property names: Object Keys loops only the keys of the object
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+let openStr = `We are open on ${properties.length} days: `;
+
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+console.log(openStr);
+
+// Properties values: Object.values loops over just the values
+const values = Object.values(openingHours);
+console.log(values);
+
+// Property Entries Loops over the entire object keys and values, transforms into array
+
+const entries = Object.entries(openingHours);
+// console.log(entries);
+
+// This destructures the object very neatley
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+  // On thu we open at 12 and close at 22
+  // On fri we open at 11 and close at 23
+  // On sat we open at 0 and close at 24
+}
+
+/*
 ///////////////////////////////// Optional Chaining
 
 if (restaurant.openingHours && restaurant.openingHours.mon)
@@ -108,6 +139,7 @@ if (restaurant.openingHours && restaurant.openingHours.mon)
 // it is a way to avoid getting errors when accessing properties of an object that may not exist.
 // the ? mark is used to check if the property exists before accessing it. and if it does not exist, it will return undefined.
 // Checks if the value on the left exists
+// ALWAYS USE WITH NULLISH OPERATOR ??
 
 console.log(restaurant.openingHours.mon?.open);
 console.log(restaurant.openingHours.fri?.open);
@@ -142,7 +174,7 @@ console.log(user[0]?.name ?? 'Array is empty');
 
 // if (restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open);
 // if (restaurant.openingHours.fri) console.log(restaurant.openingHours.fri.open);
-
+*/
 //////////////////////////// The for of loop
 /*
 // The for of loops are used to iterate over arrays, strings, maps, sets, and other iterable objects.
