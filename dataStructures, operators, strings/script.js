@@ -79,8 +79,16 @@ const restaurant = {
   },
 };
 
-///////////////////////////// STRINGS PART 3
+/*
 
+
+// underscore_case => unerscoreCase
+//  first_name
+// Some_Variable
+// calculate_AGE
+// delayed_departure
+///////////////////////////// STRINGS PART 3
+/*
 // The Split method: The split method splits a string into an array of substrings and returns the new array.
 
 console.log('a+very+nice+string'.split('+'));
@@ -133,7 +141,7 @@ const planesInLine = function (n) {
 planesInLine(5);
 planesInLine(3);
 planesInLine(12);
-
+*/
 /*
 ///////////////////////// STRINGS PART 2
 const airline = 'TAP Air Portugal';
