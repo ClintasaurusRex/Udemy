@@ -101,6 +101,15 @@ function passengerCorrect(name) {
 }
 passengerCorrect('jOnAs');
 
+// Compare Email
+
+const email = 'hello@jonas.io';
+const loginEmail = '  Hello@jonas.Io \n';
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail); // hello@jonas.io
+
 /*
 ////////////////////////// STRINGS PART 1
 
