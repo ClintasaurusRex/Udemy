@@ -99,6 +99,23 @@ console.log(airline.indexOf('Portugal')); // 8
 console.log(...plane); // A 3 2 0
 
 console.log(airline.slice(4)); // Air Portugal
+console.log(airline.slice(4, 7)); // Air - Stops indexing as soon as position 7 is reached
+
+console.log(airline.slice(0, airline.indexOf(' '))); // TAP -- use this if you dont know the index of the element
+console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // Portugal -- opposite of above
+
+console.log(airline.slice(-2)); // al
+console.log(airline.slice(1, -1)); // AP Air Portuga
+
+const checkMiddleSeat = function (seat) {
+  // B and E are the middle seats
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log('You got the middle seat :(');
+  else console.log('You got lucky');
+};
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
 
 //////////////////////////// MAPS iteration
 /*
