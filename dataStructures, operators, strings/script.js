@@ -122,6 +122,18 @@ console.log(maskCreditCard(46736278)); // ****6278
 console.log(maskCreditCard(1234567890123456)); // ************3456
 console.log(maskCreditCard('1234567890123456123123')); // ******************3123
 
+// Repeat method: Allows us to repeat the same string multiple times
+
+const message2 = 'Bad weather... All departures Delayed ';
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} in line ${'✈️'.repeat(n)}`);
+};
+planesInLine(5);
+planesInLine(3);
+planesInLine(12);
+
 /*
 ///////////////////////// STRINGS PART 2
 const airline = 'TAP Air Portugal';
