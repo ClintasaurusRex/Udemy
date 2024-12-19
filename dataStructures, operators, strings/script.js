@@ -81,6 +81,30 @@ const restaurant = {
 
 ///////////////////////////// STRINGS PART 3
 
+// The Split method: The split method splits a string into an array of substrings and returns the new array.
+
+console.log('a+very+nice+string'.split('+'));
+console.log('Clint Hiles'.split(' ')); // ['Clint', 'Hiles']
+
+const [firstName, lastName] = 'Clint Hiles'.split(' ');
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+
+  for (const n of names) {
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(' '));
+};
+
+capitalizeName('jessica ann smith davies');
+capitalizeName('clint hiles');
+
 /*
 ///////////////////////// STRINGS PART 2
 const airline = 'TAP Air Portugal';
@@ -91,7 +115,7 @@ console.log(airline.toUpperCase());
 // Fix the capitalization of a passenger name
 
 const passenger = 'cLiNt';
-const passengerLower = passenger.toLocaleLowerCase();
+const passengerLower = passenger.toLowerCase();
 const passengerCorrect1 =
   passengerLower[0].toUpperCase() + passengerLower.slice(1);
 
