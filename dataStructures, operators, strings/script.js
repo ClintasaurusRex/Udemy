@@ -132,6 +132,34 @@ const announcement =
 console.log(announcement.replace('door', 'gate')); // Will only replace the first instance
 console.log(announcement.replaceAll('door', 'gate')); // This replaces all instances of the element
 
+// Regular expressions
+
+console.log(announcement.replace(/door/g, 'gate')); // This will also replace all of the instances, the g stands for global
+
+// Booleans
+const plane = 'Airbus A320neo';
+console.log(plane.includes('A320')); // true
+console.log(plane.includes('Boeing')); // false
+console.log(plane.startsWith('Air')); // true
+
+if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+  console.log(plane, 'Part of the new airbus family');
+} else console.log('Not part of the new family');
+
+// Practice exercise
+
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are NOT allowed on board');
+  } else {
+    console.log('Welcome aboard');
+  }
+};
+checkBaggage('I have a laptop, some Food and a pocket knife');
+checkBaggage('Socks and camera');
+checkBaggage('Got some snacks and a gun for protection');
+
 /*
 ////////////////////////// STRINGS PART 1
 
