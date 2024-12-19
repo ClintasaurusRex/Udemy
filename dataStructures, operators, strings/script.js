@@ -106,9 +106,31 @@ passengerCorrect('jOnAs');
 const email = 'hello@jonas.io';
 const loginEmail = '  Hello@jonas.Io \n';
 
-const lowerEmail = loginEmail.toLowerCase();
-const trimmedEmail = lowerEmail.trim();
-console.log(trimmedEmail); // hello@jonas.io
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+// console.log(trimmedEmail); // hello@jonas.io
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(email === normalizedEmail); // hello@jonas.io
+
+function checkEmail(email) {
+  const normalizedEmail = email.toLowerCase().trim();
+  console.log(email === normalizedEmail);
+}
+checkEmail(email);
+checkEmail(loginEmail);
+
+// Replacing Strings: .replace will replace the first occurance of an element. on left side of parathesis put what you want replaced and on the right side what you want to replace it with
+
+const priceGB = '288,97£';
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcement =
+  'All passengers come to boarding door 23, Boarding door 23';
+
+console.log(announcement.replace('door', 'gate')); // Will only replace the first instance
+console.log(announcement.replaceAll('door', 'gate')); // This replaces all instances of the element
 
 /*
 ////////////////////////// STRINGS PART 1
