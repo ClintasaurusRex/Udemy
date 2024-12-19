@@ -113,9 +113,12 @@ const checkMiddleSeat = function (seat) {
   if (s === 'B' || s === 'E') console.log('You got the middle seat :(');
   else console.log('You got lucky');
 };
-checkMiddleSeat('11B');
-checkMiddleSeat('23C');
-checkMiddleSeat('3E');
+checkMiddleSeat('11B'); // You got the middle seat :(
+checkMiddleSeat('23C'); // You got lucky
+checkMiddleSeat('3E'); // You got the middle seat :(
+
+console.log(new String('Clint'));
+console.log(typeof new String('Clint'));
 
 //////////////////////////// MAPS iteration
 /*
