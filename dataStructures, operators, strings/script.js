@@ -79,6 +79,29 @@ const restaurant = {
   },
 };
 
+///////////////////////// STRINGS PART 2
+const airline = 'TAP Air Portugal';
+
+console.log(airline.toLocaleLowerCase());
+console.log(airline.toUpperCase());
+
+// Fix the capitalization of a passenger name
+
+const passenger = 'cLiNt';
+const passengerLower = passenger.toLocaleLowerCase();
+const passengerCorrect1 =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+
+console.log(passengerCorrect1); // Clint
+
+function passengerCorrect(name) {
+  const passengerLower = name.toLocaleLowerCase();
+  const pUpper = passengerLower[0].toUpperCase() + passengerLower.slice(1);
+  console.log(pUpper);
+}
+passengerCorrect('jOnAs');
+
+/*
 ////////////////////////// STRINGS PART 1
 
 const airline = 'TAP Air Portugal';
@@ -118,8 +141,8 @@ checkMiddleSeat('23C'); // You got lucky
 checkMiddleSeat('3E'); // You got the middle seat :(
 
 console.log(new String('Clint'));
-console.log(typeof new String('Clint'));
-
+console.log(typeof new String('Clint').slice(1));
+*/
 //////////////////////////// MAPS iteration
 /*
 const question = new Map([
