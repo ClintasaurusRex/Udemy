@@ -558,7 +558,7 @@ console.log(c, b, a);
 // Switching variables
 
 let [main, , secondary] = restaurant.categories;
-console.log(main, secondary);
+console.log(main, secondary); // Italian Vegitarian
 
 // const temp = main;
 // main = secondary;
