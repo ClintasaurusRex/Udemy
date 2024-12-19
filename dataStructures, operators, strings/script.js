@@ -79,8 +79,29 @@ const restaurant = {
   },
 };
 
-//////////////////////////// MAPS iteration
+////////////////////////// STRINGS PART 1
 
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]); // A
+console.log(plane[1]); // 3
+console.log(plane[2]); // 2
+console.log('B737'[0]); // B
+
+console.log(airline.length); // 16
+console.log('B737'.length); // 4
+
+console.log(airline.indexOf('r')); // 6
+console.log(airline.lastIndexOf('r')); // 10
+console.log(airline.indexOf('Portugal')); // 8
+
+console.log(...plane); // A 3 2 0
+
+console.log(airline.slice(4)); // Air Portugal
+
+//////////////////////////// MAPS iteration
+/*
 const question = new Map([
   ['question', 'What is the best programming language in the world?'],
   [1, 'C'],
@@ -115,7 +136,7 @@ console.log([...question]);
 // console.log(question.entries());
 console.log(...question.keys());
 console.log(...question.values());
-
+*/
 /////////////////////////// MAPS
 
 /*
