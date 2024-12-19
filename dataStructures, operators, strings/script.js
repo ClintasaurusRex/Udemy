@@ -18,8 +18,8 @@ const openingHours = {
 };
 
 // Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+// const flights =
+//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
 const restaurant = {
@@ -78,10 +78,31 @@ const restaurant = {
     console.log(otherIngrediants);
   },
 };
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+// console.log(flights.split('+')); 🛑
+
+const getCode = str => str.slice(0, 3).toUpperCase(); // only take the first 3 elements(Arrow function)
+
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';');
+
+  const delayedType = `${type.startsWith('_Delayed') ? '🛑' : ''}`; // Removes underscore _
+  const replaceUnderscore = `${type.replaceAll('_', ' ')}`; // space for Delayed Departure
+  const replaceTime = `${time.replace(':', 'h')}`; // Replace : with h
+
+  const formatFrom = `${getCode(from)}`; // use getCode function to replace first 3 elements
+  const formatTo = `${getCode(to)}`;
+
+  const output =
+    `${delayedType} ${replaceUnderscore} ${formatFrom} to ${formatTo} (${replaceTime})`.padStart(
+      35
+    );
+  console.log(output);
+}
 
 /*
-
-
 // underscore_case => unerscoreCase
 //  first_name
 // Some_Variable
