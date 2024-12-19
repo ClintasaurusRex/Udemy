@@ -105,6 +105,23 @@ const capitalizeName = function (name) {
 capitalizeName('jessica ann smith davies');
 capitalizeName('clint hiles');
 
+// Padding a string: Adding a number of characters until the desired length is reached
+
+const message = 'Go to gate 23';
+console.log(message.padStart(25, '+')); // ++++++++++++Go to gate 23
+console.log('clint'.padStart(25, '+')); // ++++++++++++++++++++clint
+console.log(message.padStart(25, '+').padEnd(35, '+')); // ++++++++++++Go to gate 23++++++++++
+
+const maskCreditCard = function (number) {
+  const str = number + ''; // Turns number into a string
+  const last = str.slice(-4); // takes the last 4 numbers
+  return last.padStart(str.length, '*'); // changes the old numbers with *
+};
+
+console.log(maskCreditCard(46736278)); // ****6278
+console.log(maskCreditCard(1234567890123456)); // ************3456
+console.log(maskCreditCard('1234567890123456123123')); // ******************3123
+
 /*
 ///////////////////////// STRINGS PART 2
 const airline = 'TAP Air Portugal';
