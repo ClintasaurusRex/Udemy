@@ -48,6 +48,7 @@ book.apply(swiss, flightData);
 console.log(swiss.bookings);
 
 book.call(swiss, ...flightData); // this is the same as: book.apply(swiss, flightData);
+console.log(swiss.bookings);
 
 ///////////////////// Functions returning functions
 /*
