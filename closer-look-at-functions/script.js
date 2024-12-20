@@ -50,6 +50,54 @@ console.log(swiss.bookings);
 book.call(swiss, ...flightData); // this is the same as: book.apply(swiss, flightData);
 console.log(swiss.bookings);
 
+////////////////////////////////// Bind method
+// this wont return the function it will return a new function
+// This code creates a new function by using the bind method on the book function, setting it to always use eurowings as its this context.
+
+// The purpose of this code is to create a permanent connection between the book function and the eurowings object. Think of it like creating a dedicated booking function specifically for Eurowings airline
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthanasa);
+const bookLS = book.bind(swiss);
+bookEW(23, 'Steven Williams');
+
+const bookEW23 = book.bind(eurowings, 23); // this allows us too change things as needed
+bookEW23('Clinton Arneson-Hiles');
+bookEW23('Martha Cooper');
+
+// With Event Listeners
+
+lufthanasa.planes = 300;
+lufthanasa.buyPlane = function () {
+  console.log(this);
+
+  this.planes++;
+  console.log(this.planes);
+};
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthanasa.buyPlane.bind(lufthanasa));
+
+// Partial Application
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+// const addTax = (rate, value) => value + value * rate; < this is what this func is doing meow
+
+console.log(addVAT(100));
+
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const VAT2 = addTaxRate(0.23);
+console.log(VAT2(100));
+
 ///////////////////// Functions returning functions
 /*
 const greet = function (greeting) {
