@@ -229,3 +229,15 @@ for (const [key, value] of Object.entries(bookings[0])) {
   console.log(key, ':', value);
 }
 */
+
+const person = {
+  name: 'Clint',
+  greet: function (age) {
+    console.log(`Hi, I'm ${this.name} and I'm ${age} years old`);
+  },
+};
+
+const lateGreet = person.greet;
+
+const greetLater = lateGreet.bind(person);
+greetLater(32); // Always says: Hi, I'm Clint and I'm 32 years old
