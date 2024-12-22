@@ -59,6 +59,7 @@ document
   .querySelector('.poll')
   .addEventListener('click', poll.registerNewAnswer.bind(poll));
 
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }); //This line of code calls the displayResults method that belongs to the poll object, but with a twist - it uses the special .call() method to temporarily provide different data to work with.
 /*
 const poll = {
   question: 'What is your favorite programming language?',
