@@ -1,5 +1,26 @@
 'use strict';
 
+///////////////////////////////// Closures ///////////////////////////////////////
+
+// a closure is the closed-over variable environment of the execution context in which a function was created, even after that execution context is gone
+// A closure gives you access to an outer function's scope from an inner function
+// A closure makes that outer function's scope live on for later use
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passnegers`);
+  };
+};
+
+const booker = secureBooking();
+booker();
+booker();
+booker();
+
+/*
 /////////////////////////////////// Immediately invoked function expressions (IFFE)
 // an IIFE (Immediately Invoked Function Expression) is a JavaScript function that runs as soon as it is defined.
 // It is a design pattern which is also known as a Self-Executing Anonymous Function and contains two major parts:
@@ -26,6 +47,7 @@ runOnce();
 }
 console.log(notPrivate);
 console.log(isPrivate);
+*/
 /*
 //////////////////////////////// The call and apply methods
 const lufthanasa = {
