@@ -30,6 +30,36 @@ BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 
 GOOD LUCK 😀
 */
+
+const poll = {
+  question: 'What is you favorite programming language',
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+
+  answers: new Array(4).fill(0),
+
+  registerNewAnswer: function () {
+    const answer = Number(
+      prompt(
+        `${this.question}\n${this.options.join('\n')}\n (Write option number)`
+      )
+    );
+    typeof answer === 'number' && // Is it a number? (yes)
+      answer < this.answers.length && // Is it less than the total number of possible answers? (yes)
+      this.answers[answer]++; // Then it adds 1 to the count at position 2 in the answers array
+
+    // console.log(this.answers);
+    this.displayResults();
+    // this.displayResults('string');
+  },
+  displayResults: function () {
+    console.log(`Poll results are ${this.answers.join(', ')}`);
+  },
+};
+document
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+/*
 const poll = {
   question: 'What is your favorite programming language?',
   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
@@ -301,14 +331,14 @@ for (const [key, value] of Object.entries(bookings[0])) {
 }
 */
 
-const person = {
-  name: 'Clint',
-  greet: function (age) {
-    console.log(`Hi, I'm ${this.name} and I'm ${age} years old`);
-  },
-};
+// const person = {
+//   name: 'Clint',
+//   greet: function (age) {
+//     console.log(`Hi, I'm ${this.name} and I'm ${age} years old`);
+//   },
+// };
 
-const lateGreet = person.greet;
+// const lateGreet = person.greet;
 
-const greetLater = lateGreet.bind(person);
-greetLater(32); // Always says: Hi, I'm Clint and I'm 32 years old
+// const greetLater = lateGreet.bind(person);
+// greetLater(32); // Always says: Hi, I'm Clint and I'm 32 years old
