@@ -19,7 +19,6 @@ const booker = secureBooking();
 booker();
 booker();
 booker();
-booker();
 
 /*
 /////////////////////////////////// Immediately invoked function expressions (IFFE)
