@@ -20,6 +20,7 @@ booker();
 booker();
 booker();
 
+console.dir(booker);
 /*
 /////////////////////////////////// Immediately invoked function expressions (IFFE)
 // an IIFE (Immediately Invoked Function Expression) is a JavaScript function that runs as soon as it is defined.
