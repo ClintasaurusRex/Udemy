@@ -6,6 +6,7 @@
 // A closure gives you access to an outer function's scope from an inner function
 // A closure makes that outer function's scope live on for later use
 
+/*
 const secureBooking = function () {
   let passengerCount = 0;
 
@@ -21,6 +22,37 @@ booker();
 booker();
 
 console.dir(booker);
+*/
+
+///////////////////// More closures
+// Example 1
+let f;
+
+const g = function () {
+  const a = 23;
+
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f(); // 46
+console.dir(f);
+// Reassigning f function
+h();
+f(); // 1554
+console.dir(f);
+
+// Example 2
+
 /*
 /////////////////////////////////// Immediately invoked function expressions (IFFE)
 // an IIFE (Immediately Invoked Function Expression) is a JavaScript function that runs as soon as it is defined.
