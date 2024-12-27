@@ -12,11 +12,15 @@ And now explain to YOURSELF (or someone around you) WHY this worked! Take all th
 
 GOOD LUCK 😀
 */
+// This IFFE immiedatly turns the font color red so the function doesnt have to be invoked
 (function () {
   const header = document.querySelector('h1');
-  header.style.color = 'red'
+  header.style.color = 'red';
 
-
+  document.querySelector('body').addEventListener('click', function () {
+    header.style.color = 'blue';
+  });
+})();
 
 ///////////////////////////////// Closures ///////////////////////////////////////
 
