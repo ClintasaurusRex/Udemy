@@ -168,7 +168,6 @@ movements.forEach(function (movement, index, array) {
   }
 });
 
-*/
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -195,3 +194,5 @@ console.log(currenciesUnique);
 currenciesUnique.forEach(function (value, _, map) {
   console.log(`${_}: ${value}`);
 });
+
+*/
