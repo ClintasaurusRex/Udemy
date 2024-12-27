@@ -4,21 +4,40 @@
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
-        "scope": "variable.other.readwrite",
+        "scope": "variable",
         "settings": {
-          "foreground": "#FF9D00"
+          "foreground": "#db62fd" // Light blue for variables
         }
       },
       {
-        "scope": "variable.other.constant",
+        "scope": "variable.other.property",
         "settings": {
-          "foreground": "#FF9D00"
+          "foreground": "#f9c364" // Hot pink for object properties
+        }
+      },
+
+      {
+        "scope": "entity.name.function",
+        "settings": {
+          "foreground": "#f8b109" // Warm yellow for functions
         }
       },
       {
-        "scope": "variable.other.object",
+        "scope": "support.type.object",
         "settings": {
-          "foreground": "#9CDCFE"
+          "foreground": "#4EC9B0" // Teal for objects
+        }
+      },
+      {
+        "scope": "support.type.array",
+        "settings": {
+          "foreground": "#C586C0" // Purple for arrays
+        }
+      },
+      {
+        "scope": "keyword",
+        "settings": {
+          "foreground": "#140303" // Blue for keywords like const, let
         }
       }
     ]
