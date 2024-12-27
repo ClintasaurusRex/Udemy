@@ -71,7 +71,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 // let arr = ['a', 'b', 'c', 'd', 'e'];
@@ -120,3 +120,17 @@ console.log(arr.at(-1)); // 64
 console.log('Clint'.at(0)); // C
 
 */
+
+////////////////////////////////////////////////////////////////
+
+// The forEach Method - This is a method that is used to iterate over an array and perform a function on each element in the array. It is a higher order function.
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+for (const movement of movements) {
+  if (movement > 0) {
+    console.log(`You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${movement}`);
+  }
+}
