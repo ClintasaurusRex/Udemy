@@ -101,6 +101,7 @@ console.log(arr2);
 // CONCAT - Joins two arrays together and returns a new array without mutating the original array
 const letters = arr.concat(arr2);
 console.log(letters); // ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
-console.log([...arr, ...arr2]); // same result
+console.log([...arr, ...arr2]); // same result - store in a variable if needed
 
 // JOIN - Joins all elements of an array into a string and returns the string without mutating the original array
+console.log(letters.join(' - ')); // a - b - c - d - e - f - g - h - i - j
