@@ -1,4 +1,26 @@
 {
   "git.ignoreLimitWarning": true,
-  "workbench.preferredDarkColorTheme": "Default High Contrast"
+  "workbench.preferredDarkColorTheme": "Default High Contrast",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "variable.other.readwrite",
+        "settings": {
+          "foreground": "#FF9D00"
+        }
+      },
+      {
+        "scope": "variable.other.constant",
+        "settings": {
+          "foreground": "#FF9D00"
+        }
+      },
+      {
+        "scope": "variable.other.object",
+        "settings": {
+          "foreground": "#9CDCFE"
+        }
+      }
+    ]
+  }
 }
