@@ -74,7 +74,7 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
-let arr = ['a', 'b', 'c', 'd', 'e'];
+// let arr = ['a', 'b', 'c', 'd', 'e'];
 
 // SLICE
 console.log(arr.slice(2)); // ['c', 'd', 'e']
@@ -85,4 +85,11 @@ console.log(arr.slice(1, -2)); // ['b', 'c']
 console.log(arr.slice()); // ['a', 'b', 'c', 'd', 'e']
 console.log([...arr]); // ['a', 'b', 'c', 'd', 'e']
 
-// SPLICE
+// SPLICE - this mutates the original array
+// console.log(arr.splice(2)); // ['c', 'd', 'e']
+arr.splice(-1);
+arr.splice(1, 2); // The second argument is how many elements we want to delete
+console.log(arr); // ['a', 'b', 'c', 'd']
+
+// REVERSE
+let arr = ['a', 'b', 'c', 'd', 'e'];
