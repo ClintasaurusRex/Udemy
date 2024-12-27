@@ -98,4 +98,9 @@ const arr2 = ['j', 'i', 'h', 'g', 'f'];
 console.log(arr2.reverse()); // ['f', 'g', 'h', 'i', 'j']
 console.log(arr2);
 
-// CONCAT
+// CONCAT - Joins two arrays together and returns a new array without mutating the original array
+const letters = arr.concat(arr2);
+console.log(letters); // ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+console.log([...arr, ...arr2]); // same result
+
+// JOIN - Joins all elements of an array into a string and returns the string without mutating the original array
