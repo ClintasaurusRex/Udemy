@@ -93,7 +93,23 @@ const calcDisplaySummary = function (movements) {
   const incomes = movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov);
-  labelSumIn.textContent = `${incomes}€`;
+  labelSumIn.textContent = `${incomes}€`; // 5020€
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`; // 1180€
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      console.log(arr); // [2.4, 5.4, 36, 0.84, 15.6]
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+
+  labelSumInterest.textContent = `${interest}€`; // 59.4€
 };
 calcDisplaySummary(account1.movements);
 
