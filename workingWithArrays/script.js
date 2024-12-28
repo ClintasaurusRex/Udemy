@@ -72,7 +72,7 @@ const displayMovements = function (movements) {
           <div class="movements__type movements__type--deposit"> ${
             index + 1
           }  ${type}</div>          
-          <div class="movements__value"> ${movement} </div>
+          <div class="movements__value"> ${movement}€ </div>
         </div>`;
 
     containerMovements.insertAdjacentHTML('afterbegin', html);
@@ -83,11 +83,19 @@ displayMovements(account1.movements);
 /////////////////////////////////////////////////
 
 /////////////////////////// Reducer //////////////////////////////////////////
-const calcPrintBalence = function (movements) {
+const calcDisplayBalence = function (movements) {
   const balence = movements.reduce((acc, cur) => acc + cur, 0);
-  labelBalance.textContent = `${balence} CAD`;
+  labelBalance.textContent = `${balence} €`;
 };
-calcPrintBalence(account1.movements);
+calcDisplayBalence(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov);
+  labelSumIn.textContent = `${incomes}€`;
+};
+calcDisplaySummary(account1.movements);
 
 //////////////////////////////////////////////////////////////////////////
 
