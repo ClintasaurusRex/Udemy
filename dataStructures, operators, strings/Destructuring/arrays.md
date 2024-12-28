@@ -58,7 +58,7 @@ const b = arr[1];
 const c = arr[2];
 
 const [x, y, z] = arr;
-console.log(x, y, z);
+console.log(x, y, z); // [2, 3, 4]
 console.log(c, b, a);
 
 // The space between commas skips over the element in the middle of the array.object
@@ -85,7 +85,7 @@ const nested = [2, 3, [5, 6]];
 // console.log(i, j);
 // Destructuring inside destructuring
 const [i, , [j, k]] = nested;
-console.log(i, j, k);
+console.log(i, j, k); // 2 5 6
 
 // Default values - if a value doesnt exist this gives it a default value
 const [p = 1, q = 1, r = 1] = [8, 9];
