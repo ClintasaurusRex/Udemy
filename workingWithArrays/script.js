@@ -446,19 +446,31 @@ const eurToUsd = 1.1;
       const arr2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
       console.log(arr1, arr2);
       
+      /////////////////// Chaining Methods /////////////////////////////////////
+      
+      const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+      const eurToUsd = 1.1;
+      
+      // PIPELINE
+      const totalDepositsUSD = movements
+      .filter(mov => mov > 0)
+      .map((mov, i, arr) => {
+        // console.log(arr); // [200, 450, 3000, 70, 1300]
+        return mov * eurToUsd;
+      })
+      // .map(mov => mov * eurToUsd)
+      .reduce((acc, mov) => acc + mov, 0);
+      console.log(Math.trunc(totalDepositsUSD)); // 5522
       */
-/////////////////// Chaining Methods /////////////////////////////////////
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const eurToUsd = 1.1;
+////////////////////////// Coding Challenge 3 ////////////////////////////////////
 
-// PIPELINE
-const totalDepositsUSD = movements
-  .filter(mov => mov > 0)
-  .map((mov, i, arr) => {
-    // console.log(arr); // [200, 450, 3000, 70, 1300]
-    return mov * eurToUsd;
-  })
-  // .map(mov => mov * eurToUsd)
-  .reduce((acc, mov) => acc + mov, 0);
-console.log(Math.trunc(totalDepositsUSD)); // 5522
+const calcAverageHumanAge = ages =>
+  ages
+    .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+    .filter(age => age >= 18)
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+
+const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+console.log(avg1, avg2);
