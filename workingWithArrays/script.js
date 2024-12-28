@@ -81,6 +81,34 @@ const displayMovements = function (movements) {
 displayMovements(account1.movements);
 
 /////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+
+// Compute usernames
+
+const user = 'Steven Thomas Williams'; // stw
+
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+//   const username = user
+//     .toLowerCase()
+//     .split(' ')
+//     .map(name => name[0]) // This returns an array with letters at index 0 (awesome)
+//     .join(''); // stw
+//   return username;
+// };
+// console.log(createUsernames(accounts)); // stw
+
+createUsernames(accounts);
+console.log(accounts);
+
 /////////////////////////////////////////////////
 // LECTURES
 
@@ -264,7 +292,6 @@ const nums = [1, 4, 3, 2, 5];
 console.log(nums.map(num => num * 2));
 console.log(nums.filter(num => num > 2));
 console.log(nums.reduce((acc, curr) => acc + curr, 0));
-*/
 
 ///////////////////////////////////////////////////////////////////
 
@@ -276,37 +303,38 @@ const eurToUsd = 1.1;
 
 // Without arrow function
 // const movementsUSD = movements.map(function (movement) {
-//   return (movement * eurToUsd).toFixed(2);
-// });
-
-// With arrow function
-const movementsUSDarrow = movements.map(movement => movement * eurToUsd);
-
-console.log(movements);
-console.log('arrow', movementsUSDarrow);
-
-const movementUSDfor = [];
-for (const mov of movements) movementUSDfor.push(mov * eurToUsd);
-console.log(movementUSDfor);
-
-const movmentDescriptions = movements.map((mov, i, arr) => {
-  // With ternary operator
-  return `Movement ${i + 1}: You ${
-    mov > 0 ? 'deposited' : 'withdrew'
-  } $${Math.abs(mov)}`;
-
-  // Without ternary operator
-  // if (mov > 0) {
-  //   return `Movement ${i + 1}: You deposited $${mov}`;
-  // } else {
-  //   return `Movement ${i + 1}: You withdrew $${Math.abs(mov)}`;
-  // }
-});
-console.log(movmentDescriptions);
-
-// movementsUSD.forEach(converted =>
-//   console.log(`The coverted amount is $${converted}`)
-// );
+  //   return (movement * eurToUsd).toFixed(2);
+  // });
+  
+  // With arrow function
+  const movementsUSDarrow = movements.map(movement => movement * eurToUsd);
+  
+  console.log(movements);
+  console.log('arrow', movementsUSDarrow);
+  
+  const movementUSDfor = [];
+  for (const mov of movements) movementUSDfor.push(mov * eurToUsd);
+  console.log(movementUSDfor);
+  
+  const movmentDescriptions = movements.map((mov, i, arr) => {
+    // With ternary operator
+    return `Movement ${i + 1}: You ${
+      mov > 0 ? 'deposited' : 'withdrew'
+    } $${Math.abs(mov)}`;
+    
+    // Without ternary operator
+    // if (mov > 0) {
+      //   return `Movement ${i + 1}: You deposited $${mov}`;
+      // } else {
+        //   return `Movement ${i + 1}: You withdrew $${Math.abs(mov)}`;
+        // }
+      });
+      console.log(movmentDescriptions);
+      
+      // movementsUSD.forEach(converted =>
+        //   console.log(`The coverted amount is $${converted}`)
+        // );
+        */
 
 // The filter method is a method that takes an array and returns a new array with only the elements that pass a certain condition. It takes a callback function as an argument and applies that callback function to each element in the array. The callback function can take up to three arguments: the current element, the index of the current element, and the array itself. The callback function returns a boolean value that determines whether the current element should be included in the new array.
 
