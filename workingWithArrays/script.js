@@ -65,13 +65,13 @@ const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
 
   movements.forEach(function (movement, index) {
-    const type = movement > 0 ? 'deposit' : 'withdrawl';
+    const type = movement > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
         <div class="movements__row">
-          <div class="movements__type movements__type--deposit"> ${
-            index + 1
-          }  ${type}</div>          
+          <div class="movements__type movements__type--${type}"> ${
+      index + 1
+    }  ${type}</div>          
           <div class="movements__value"> ${movement}€ </div>
         </div>`;
 
@@ -87,22 +87,22 @@ const calcDisplayBalence = function (movements) {
   const balence = movements.reduce((acc, cur) => acc + cur, 0);
   labelBalance.textContent = `${balence} €`;
 };
-calcDisplayBalence(account1.movements);
+// calcDisplayBalence(account1.movements);
 
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov);
   labelSumIn.textContent = `${incomes}€`; // 5020€
 
-  const out = movements
+  const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(out)}€`; // 1180€
 
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => {
       // console.log(arr); // [2.4, 5.4, 36, 0.84, 15.6]
       return int >= 1;
@@ -111,11 +111,9 @@ const calcDisplaySummary = function (movements) {
 
   labelSumInterest.textContent = `${interest}€`; // 59.4€
 };
-calcDisplaySummary(account1.movements);
+// calcDisplaySummary(account1.movements);
 
-//////////////////////////////////////////////////////////////////////////
-
-// Compute usernames
+//////////////////////////////////////////// Compute usernames //////////////////////////////////////////////////
 
 const user = 'Steven Thomas Williams'; // stw
 
@@ -141,12 +139,43 @@ const createUsernames = function (accs) {
 createUsernames(accounts);
 // console.log(accounts);
 
-///////////////////////////// EVENT HANDLER /////////////////////////
+/////////////////////////////////////////////// EVENT HANDLER /////////////////////////
+
+let currentAccount;
 
 btnLogin.addEventListener('click', function (event) {
   // Prevent form from submitting
   event.preventDefault();
-  console.log('LOGIN');
+  // console.log('LOGIN');
+
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+
+  // Optional chaining, This will only look for the right pin IF the account exists
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // console.log('LOGIN');
+    // Display UI and welcome message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+
+    // Clear input fields
+
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+
+    // Display movements
+    displayMovements(currentAccount.movements);
+
+    // Display balence
+    calcDisplayBalence(currentAccount.movements);
+
+    // Display summary
+    calcDisplaySummary(currentAccount);
+  }
 });
 
 /////////////////////////////////////////////////
