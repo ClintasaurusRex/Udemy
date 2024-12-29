@@ -141,6 +141,14 @@ const createUsernames = function (accs) {
 createUsernames(accounts);
 // console.log(accounts);
 
+///////////////////////////// EVENT HANDLER /////////////////////////
+
+btnLogin.addEventListener('click', function (event) {
+  // Prevent form from submitting
+  event.preventDefault();
+  console.log('LOGIN');
+});
+
 /////////////////////////////////////////////////
 // LECTURES
 
