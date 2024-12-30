@@ -153,7 +153,7 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
-// Event handler
+// Event handlers
 let currentAccount;
 
 btnLogin.addEventListener('click', function (event) {
@@ -213,6 +213,33 @@ btnTransfer.addEventListener('click', function (e) {
   }
 
   console.log(amount, receiverAcc);
+});
+
+////////////////////////// The findIndex Method ///////////////////////
+// This method will ONLY return the index of the element in the array
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  // console.log('DELETE');
+
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    console.log(index);
+
+    // Delete accout
+    accounts.splice(index, 1);
+
+    // Hide UI
+    containerApp.style.opacity = 0;
+  }
+
+  inputCloseUsername.value = inputClosePin.value = '';
+  inputLoginPin.blur();
 });
 
 /////////////////////////////////////////////////
