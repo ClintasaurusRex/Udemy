@@ -602,7 +602,9 @@ console.log(movements);
 const lastWithdrawal = movements.findLast(mov => mov < 0);
 console.log(lastWithdrawal); // -130
 
-const latestLargeMovementIndex = movements.findLastIndex(mov => mov > 1000);
+const latestLargeMovementIndex = movements.findLastIndex(mov => mov > 2000);
 console.log(
-  `Your lastest large movement was ${latestLargeMovementIndex} movements ago`
+  `Your lastest large movement was ${
+    movements.length - latestLargeMovementIndex
+  } movements ago`
 ); // Your lastest large movement was 7 movements ago
