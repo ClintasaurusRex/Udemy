@@ -151,7 +151,7 @@ btnLogin.addEventListener('click', function (event) {
   currentAccount = accounts.find(
     acc => acc.username === inputLoginUsername.value
   );
-  console.log(currentAccount);
+  // console.log(currentAccount);
 
   // Optional chaining, This will only look for the right pin IF the account exists
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
@@ -176,6 +176,12 @@ btnLogin.addEventListener('click', function (event) {
     // Display summary
     calcDisplaySummary(currentAccount);
   }
+});
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = inputTransferTo.value;
 });
 
 /////////////////////////////////////////////////
