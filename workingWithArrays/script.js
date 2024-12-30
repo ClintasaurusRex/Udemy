@@ -193,6 +193,11 @@ btnTransfer.addEventListener('click', function (e) {
   );
   inputTransferAmount.value = inputTransferTo.value = '';
   inputTransferAmount.blur();
+
+  if (!receiverAcc) {
+    alert('The account your trying to transfer to does not exist');
+  }
+
   if (
     amount > 0 &&
     receiverAcc &&
