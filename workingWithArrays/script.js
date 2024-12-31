@@ -749,6 +749,8 @@ const breeds = [
   },
 ];
 
+console.table(breeds);
+
 const huskyWeight = breeds.find(breed => breed.breed === 'Husky').averageWeight;
 console.log(huskyWeight);
 
@@ -767,9 +769,9 @@ console.log(uniqueActivities);
 const swimmingAdjacent = [
   ...new Set(
     breeds
-      .filter(breed => breed.activities.includes('swimming'))
-      .flatMap(breed => breed.activities)
-      .filter(activity => activity !== 'swimming')
+      .filter(breed => breed.activities.includes('swimming')) // looks for the dogs that like swimming
+      .flatMap(breed => breed.activities) // Shows the other activities they like
+      .filter(activity => activity !== 'swimming') // Takes swimming out of the other activities they loke
   ),
 ];
 console.log(swimmingAdjacent);
