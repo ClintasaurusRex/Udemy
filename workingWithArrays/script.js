@@ -809,5 +809,10 @@ console.log(movements);
 //   if (a < b) return -1;
 // });
 // console.log(movements);
+// Ascending order
 const sorted = movements.sort((a, b) => a - b);
-console.log(sorted);
+console.log(sorted); //[-650, -400, -130, 70, 200, 450, 1300, 3000]
+
+// Descending order
+
+// console.log(movements.sort((a, b) => b - a)); // [3000, 1300, 450, 200, 70, -130, -400, -650]
