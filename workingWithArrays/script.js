@@ -263,10 +263,11 @@ btnClose.addEventListener('click', function (e) {
   inputLoginPin.blur();
 });
 
+let sorted = false;
 btnSort.addEventListener('click', function (e) {
   e.preventDefault();
-
-  displayMovements(currentAccount.movements, true);
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
 
 /////////////////////////////////////////////////
@@ -818,7 +819,7 @@ console.log(movements);
 // });
 // console.log(movements);
 // Ascending order
-const sorted = movements.sort((a, b) => a - b);
+const sorted1 = movements.sort((a, b) => a - b);
 console.log(sorted); //[-650, -400, -130, 70, 200, 450, 1300, 3000]
 
 // Descending order
