@@ -709,7 +709,7 @@ YOUR TASKS:
 BONUS: What's the average weight of the heaviest breed that likes to fetch? HINT: Use the "Math.max" method along with the ... operator.
 
 TEST DATA:
-*/
+
 
 const breeds = [
   {
@@ -790,3 +790,24 @@ const heaviestFetchBreed = Math.max(...fetchWeights);
 
 console.log(fetchWeights);
 console.log(heaviestFetchBreed);
+*/
+///////////////////////////////////////////////////////////////////////////////
+
+// Sorting arrays
+// sortting arrays is not a good idea with numbers because it will sort the numbers as strings
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+
+console.log(owners.sort()); // This mutates the original array BE CAREFUL
+console.log(owners);
+
+// numbers
+console.log(movements);
+
+// movements.sort((a, b) => {
+//   if (a > b) return 1;
+//   if (a < b) return -1;
+// });
+// console.log(movements);
+const sorted = movements.sort((a, b) => a - b);
+console.log(sorted);
