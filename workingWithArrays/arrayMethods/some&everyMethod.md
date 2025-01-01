@@ -30,7 +30,19 @@ console.log(movements.some(mov => mov === -130));
 const anyDeposits = movements.some(mov => mov > 0);
 console.log(anyDeposits);
 
-// EVERY
+// EVERY: The every() method is an iterative method. It calls a provided callbackFn function once for each element in an array, until the callbackFn returns a falsy value. If such an element is found, every() immediately returns false and stops iterating through the array. Otherwise, if callbackFn returns a truthy value for all elements, every() returns true. Read the iterative methods section for more information about how these methods work in general.
+
+// Syntax:
+every(callbackFn);
+every(callbackFn, thisArg);
+
+const isBelowThreshold = currentValue => currentValue < 40;
+
+const array1 = [1, 30, 39, 29, 10, 13];
+
+console.log(array1.every(isBelowThreshold));
+// Expected output: true
+
 // only returns true if every elements in the array satisfies the condition
 console.log(movements.every(mov => mov > 0)); // false
 console.log(account4.movements.every(mov => mov > 0)); // true
