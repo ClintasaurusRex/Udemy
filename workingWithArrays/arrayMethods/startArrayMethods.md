@@ -39,7 +39,7 @@ console.log([...arr]); // ['a', 'b', 'c', 'd', 'e']
 // To create a new array with a segment removed and/or replaced without mutating the original array, use toSpliced(). To access part of an array without modifying it, see slice().
 
 // Syntax
-// splice(start), splice(start, deleteCount), splice(start, deleteCount, item1)
+splice(start), splice(start, deleteCount), splice(start, deleteCount, item1);
 
 const months = ['Jan', 'March', 'April', 'June'];
 months.splice(1, 0, 'Feb');
