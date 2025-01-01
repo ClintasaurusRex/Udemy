@@ -24,7 +24,12 @@ includes(searchElement, fromIndex);
 
 console.log(movements.includes(-130));
 
-// SOME: CONDITION
+// SOME:The some() method is an iterative method. It calls a provided callbackFn function once for each element in an array, until the callbackFn returns a truthy value. If such an element is found, some() immediately returns true and stops iterating through the array. Otherwise, if callbackFn returns a falsy value for all elements, some() returns false. Read the iterative methods section for more information about how these methods work in general
+
+// Syntax:
+some(callbackFn);
+some(callbackFn, thisArg);
+
 console.log(movements.some(mov => mov === -130));
 
 const anyDeposits = movements.some(mov => mov > 0);
@@ -36,12 +41,41 @@ console.log(anyDeposits);
 every(callbackFn);
 every(callbackFn, thisArg);
 
+function isBiggerThan10(element, index, array) {
+  return element > 10;
+}
+
+[2, 5, 8, 1, 4].some(isBiggerThan10); // false
+[12, 5, 8, 1, 4].some(isBiggerThan10); // true
+
+const isBelowThreshold = currentValue => currentValue < 40;
+
+/////////////////////// EVERY METHOD
+
+// Every Method:
+
+// The every() method is an iterative method. It calls a provided callbackFn function once for each element in an array, until the callbackFn returns a falsy value. If such an element is found, every() immediately returns false and stops iterating through the array. Otherwise, if callbackFn returns a truthy value for all elements, every() returns true. Read the iterative methods section for more information about how these methods work in general.
+
+Syntax: every(callbackFn);
+every(callbackFn, thisArg);
+
+//--------------------------------------------
 const isBelowThreshold = currentValue => currentValue < 40;
 
 const array1 = [1, 30, 39, 29, 10, 13];
 
 console.log(array1.every(isBelowThreshold));
 // Expected output: true
+
+// Check if one array is a subset of another array
+// The following example tests if all the elements of an array are present in another array.
+
+//------------------------------------------
+const isSubset = (array1, array2) =>
+  array2.every(element => array1.includes(element));
+
+console.log(isSubset([1, 2, 3, 4, 5, 6, 7], [5, 7, 6])); // true
+console.log(isSubset([1, 2, 3, 4, 5, 6, 7], [5, 8, 7])); // false
 
 // only returns true if every elements in the array satisfies the condition
 console.log(movements.every(mov => mov > 0)); // false
