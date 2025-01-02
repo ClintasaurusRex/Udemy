@@ -969,3 +969,22 @@ const { deposits, withdrawals } = accounts
   );
 
 console.log(deposits, withdrawals); // {deposits: 25180, withdrawals: -7340}
+
+// 4. Create a simple function to convert a string to a titleCase
+
+// This is a nice title => This Is a Nice Title
+const convertTitleCase = function (title) {
+  const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with'];
+
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(word =>
+      exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
+    );
+
+  return titleCase;
+};
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG title but not to long'));
+console.log(convertTitleCase('and here is another title with and EXAMPLE'));
