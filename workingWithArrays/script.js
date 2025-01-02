@@ -861,7 +861,7 @@ console.log(groupedByActivity); // {very active: Array(3), active: Array(1)}
 const groupedByType = Object.groupBy(accounts, ({ type }) => type); // with destructing
 console.log(groupedByType); // {premium: Array(2), standard: Array(1), basic: Array(1)}
 
-*/
+
 //////////////////////////////////////////////////////////////////////
 /// More ways of creating and filling arrays
 
@@ -901,3 +901,23 @@ labelBalance.addEventListener('click', function () {
   // const movementsUI2 = [...document.querySelectorAll('.movements__value')];
   // console.log(movementsUI2);
 });
+
+const numbers = Array.from({ length: 10 }, (_, i) => i + 1);
+console.log(numbers); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+*/
+
+//////////////////////////////////////////////////////////////////////////
+
+// Non- Destructive alternatives toReversed, toSorted, toSpliced
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+
+// reversed method is destructive so if a slice method is in front of it the original will be untouched
+
+// toReversed method
+const reversedMovements = movements.toReversed();
+console.log(reversedMovements);
+console.log(movements);
+
+// toSorted Mehtod
