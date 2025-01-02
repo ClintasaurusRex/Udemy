@@ -925,3 +925,31 @@ const newMovements = movements.with(1, 2000);
 console.log(newMovements);
 // console.log(movements); // [200, 2000, -400, 3000, -650, -130, 70, 1300]
 */
+///////////////////////////////////////////////////////////////////////////////////
+
+// 1.
+// Array Methods practice
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((acc, cur) => acc + cur, 0);
+
+console.log(bankDepositSum);
+
+// 2.
+// How many deposits have been with at least 1000
+
+// const numDeposits1000 = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov >= 1000).length;
+
+const numDeposits1000 = accounts
+  .flatMap(acc => acc.movements)
+  // .reduce((count, cur) => (cur >= 1000 ? count + 1 : count), 0);
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+
+console.log(numDeposits1000);
+
+// Prefix operator
+let a = 10;
+console.log(++a);
