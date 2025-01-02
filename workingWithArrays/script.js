@@ -904,7 +904,6 @@ labelBalance.addEventListener('click', function () {
 
 const numbers = Array.from({ length: 10 }, (_, i) => i + 1);
 console.log(numbers); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-*/
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -925,3 +924,4 @@ console.log(reversedMovements);
 const newMovements = movements.with(1, 2000);
 console.log(newMovements);
 // console.log(movements); // [200, 2000, -400, 3000, -650, -130, 70, 1300]
+*/
