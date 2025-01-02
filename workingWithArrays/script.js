@@ -953,3 +953,19 @@ console.log(numDeposits1000);
 // Prefix operator
 let a = 10;
 console.log(++a);
+
+// 3. Creating an object with reduce
+
+const { deposits, withdrawals } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+
+      sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+      return sums;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
+
+console.log(deposits, withdrawals); // {deposits: 25180, withdrawals: -7340}
