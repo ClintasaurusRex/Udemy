@@ -1058,10 +1058,10 @@ console.log(
 
 const ownersTooMuch = dogs
   .filter(dog => dog.curFood > dog.recFood)
-  .map(dog => dog.owners);
+  .flatMap(dog => dog.owners);
 const ownersTooLittle = dogs
   .filter(dog => dog.curFood < dog.recFood)
-  .map(dog => dog.owners);
+  .flatMap(dog => dog.owners);
 
 console.log(ownersTooMuch);
 console.log(ownersTooLittle);
