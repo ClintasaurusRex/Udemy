@@ -1,3 +1,4 @@
+```js
 'use strict';
 
 const btn = document.querySelector('.btn-country');
@@ -46,3 +47,4 @@ const getCountryData = function (country) {
 };
 getCountryData('portugal');
 getCountryData('canada');
+```
