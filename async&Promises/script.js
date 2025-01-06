@@ -15,7 +15,7 @@ const countriesContainer = document.querySelector('.countries');
 
 const getCountryData = function (country) {
   const request = new XMLHttpRequest();
-  request.open('GET', country);
+  request.open('GET', `https://restcountries.com/v2/name/${country}`);
   request.send();
 
   request.addEventListener('load', function () {
@@ -33,6 +33,8 @@ const getCountryData = function (country) {
               +data.population / 1000000
             ).toFixed(1)} people</p>
             <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+            <p class="country__row"><span>🕐</span>${data.timezones[0]}</p>
+            <p class="country__row"><span>🌆</span>${data.capital}</p>
             <p class="country__row"><span>💰</span>${
               data.currencies[0].name
             } </p>
@@ -42,4 +44,5 @@ const getCountryData = function (country) {
     countriesContainer.style.opacity = 1;
   });
 };
-getCountryData('https://restcountries.com/v2/name/portugal');
+getCountryData('portugal');
+getCountryData('canada');
