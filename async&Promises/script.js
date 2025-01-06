@@ -12,17 +12,19 @@ const countriesContainer = document.querySelector('.countries');
 // https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}
 
 ///////////////////////////////////////
-const request = new XMLHttpRequest();
-request.open('GET', 'https://restcountries.com/v2/name/portugal');
-request.send();
 
-request.addEventListener('load', function () {
-  // console.log(this.responseText);
+const getCountryData = function (country) {
+  const request = new XMLHttpRequest();
+  request.open('GET', country);
+  request.send();
 
-  const [data] = JSON.parse(this.responseText);
-  console.log(data);
+  request.addEventListener('load', function () {
+    // console.log(this.responseText);
 
-  const html = `    <article class="country">
+    const [data] = JSON.parse(this.responseText);
+    console.log(data);
+
+    const html = `    <article class="country">
           <img class="country__img" src="${data.flag}" />
           <div class="country__data">
             <h3 class="country__name">${data.name}</h3>
@@ -36,6 +38,8 @@ request.addEventListener('load', function () {
             } </p>
           </div>
         </article>`;
-  countriesContainer.insertAdjacentHTML('beforeend', html);
-  countriesContainer.style.opacity = 1;
-});
+    countriesContainer.insertAdjacentHTML('beforeend', html);
+    countriesContainer.style.opacity = 1;
+  });
+};
+getCountryData('https://restcountries.com/v2/name/portugal');
