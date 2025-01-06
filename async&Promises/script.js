@@ -10,3 +10,8 @@ const countriesContainer = document.querySelector('.countries');
 // https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}
 
 ///////////////////////////////////////
+const p = document.querySelector('h1');
+setTimeout(function () {
+  p.textContent = 'My name is Clint';
+}, 3000);
+p.style.color = 'red';
