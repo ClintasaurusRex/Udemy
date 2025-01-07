@@ -230,3 +230,25 @@ Promise.resolve('Resolved promise 2').then(res => {
 });
 console.log('Test End');
 */
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log('Lottery draw is happening');
+  setTimeout(() => {
+    if (Math.random() >= 0.5) {
+      resolve(`YOU WIN!!!`);
+    } else {
+      reject(new Error('YOU LOSE'));
+    }
+  }, 2000);
+});
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+
+// lotteryPromise
+//   .then(res => {
+//     btn.textContent = res;
+//     console.log(res);
+//   })
+//   .catch(err => {
+//     btn.textContent = err;
+//     console.error(err);
+//   });
