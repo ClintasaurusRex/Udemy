@@ -412,37 +412,45 @@ const whereAmI = async function () {
     const resGeo = await fetch(
       `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
     );
-    // if (!resGeo.ok) throw new Error('Problem getting location data');
+    if (!resGeo.ok) throw new Error('Problem getting location data');
 
     const dataGeo = await resGeo.json();
-
-    console.log(dataGeo);
 
     // Country Data
 
     const res = await fetch(
       `https://restcountries.com/v2/name/${dataGeo.countryName}`
     );
-    // if (!resGeo.ok) throw new Error('Problem getting location Country');
-    console.log(res);
-
+    if (!resGeo.ok) throw new Error('Problem getting location Country');
     const data = await res.json();
-    console.log(data);
 
     renderCountry(data[0]);
+
+    return `You are in ${dataGeo.city}, ${dataGeo.countryName}`;
   } catch (err) {
     console.error(` 💥${err}`);
     renderError(`Something went wong 💥 ${err.message}`);
+
+    // Reject promise returned from async function
+    throw err;
   }
 };
-whereAmI();
 
-console.log('FIRST');
+console.log('1: Will get location');
+// const city = whereAmI();
+// console.log(city);
 
-// try {
-//   let y = 1;
-//   const x = 2;
-//   x = 3;
-// } catch (err) {
-//   alert(err.message);
-// }
+// whereAmI()
+//   .then(city => console.log(`2: ${city}`))
+//   .catch(err => console.error(`2: ${err.message}`))
+//   .finally(() => console.log('3: Finished getting location'));
+
+(async function () {
+  try {
+    const city = await whereAmI();
+    console.log(`2: ${city}`);
+  } catch (err) {
+    console.log('3: Finished getting location');
+  }
+  console.log('3: Finished getting location');
+})();
