@@ -101,6 +101,10 @@ const getCountryData = function (country) {
       return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
     })
     .then(response => response.json())
-    .then(data => renderCountry(data, 'neighbour'));
+    .then(data => renderCountry(data, 'neighbour'))
+    .catch(err => alert(err)); // this will catch any errors in the promise chain
 };
-getCountryData('portugal');
+
+btn.addEventListener('click', function () {
+  getCountryData('portugal');
+});
