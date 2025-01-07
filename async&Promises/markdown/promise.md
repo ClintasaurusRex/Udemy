@@ -79,6 +79,7 @@ const getCountryData = function (country) {
 
       // Country 2
       return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+      // Without returning the fetch, we wouldn't be able to chain the promises and would have to nest the second API call inside the first one, leading to callback hell. The return fetch enables flat promise chaining which is more readable and maintainable.
     })
     .then(response => response.json())
     .then(data => renderCountry(data, 'neighbour'))
