@@ -340,7 +340,7 @@ PART 2
 TEST DATA: Images in the img folder. Test the error handler by passing a wrong image path. Set the network speed to 'Fast 3G' in the dev tools Network tab, otherwise images load too fast.
 
 GOOD LUCK 😀
-*/
+
 const wait = function (seconds) {
   return new Promise(function (resolve) {
     setTimeout(resolve, seconds * 1000);
@@ -349,40 +349,82 @@ const wait = function (seconds) {
 
 const imgContainer = document.querySelector('.images');
 
-const createImage = function (imgPath) {
+
+// const createImage = function (imgPath) {
+//   return new Promise(function (resolve, reject) {
+//     const img = document.createElement('img');
+//     img.src = imgPath;
+
+//     img.addEventListener('load', function () {
+//       imgContainer.append(img);
+//       resolve(img);
+//     });
+
+//     img.addEventListener('error', function () {
+//       reject(new Error('Image not found'));
+//     });
+//   });
+// };
+
+// let currentImage;
+
+// createImage('img/img-1.png')
+//   .then(img => {
+//     currentImage = img;
+//     console.log('Image 1 loaded');
+//     return wait(2);
+//   })
+//   .then(() => {
+//     currentImage.style.display = 'none';
+//     return createImage('img/img-2.png');
+//   })
+//   .then(img => {
+//     currentImage = img;
+//     console.log('Image 2 loaded');
+//     return wait(2);
+//   })
+//   .then(() => {
+//     currentImage.style.display = 'none';
+//   })
+//   .catch(err => console.error(err));
+*/
+
+/// A function that keeps running in the background while perfoming the code inside of it then when done returns a promise
+
+// This is the same as the example below but below is better
+// fetch(`https://restcountries.com/v2/name/${country}`).then(res =>
+//   console.log(res)
+// );
+
+const getPosition = function () {
   return new Promise(function (resolve, reject) {
-    const img = document.createElement('img');
-    img.src = imgPath;
-
-    img.addEventListener('load', function () {
-      imgContainer.append(img);
-      resolve(img);
-    });
-
-    img.addEventListener('error', function () {
-      reject(new Error('Image not found'));
-    });
+    navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
 
-let currentImage;
+const whereAmI = async function () {
+  // Geolocation
+  const pos = await getPosition();
+  const { latitude: lat, longitude: lng } = pos.coords;
 
-createImage('img/img-1.png')
-  .then(img => {
-    currentImage = img;
-    console.log('Image 1 loaded');
-    return wait(2);
-  })
-  .then(() => {
-    currentImage.style.display = 'none';
-    return createImage('img/img-2.png');
-  })
-  .then(img => {
-    currentImage = img;
-    console.log('Image 2 loaded');
-    return wait(2);
-  })
-  .then(() => {
-    currentImage.style.display = 'none';
-  })
-  .catch(err => console.error(err));
+  // Reverse GeoCoding
+  const resGeo = await fetch(
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+  );
+  const dataGeo = await resGeo.json();
+  console.log(dataGeo);
+
+  // Country Data
+
+  const res = await fetch(
+    `https://restcountries.com/v2/name/${dataGeo.countryName}`
+  );
+  console.log(res);
+
+  const data = await res.json();
+  console.log(data);
+
+  renderCountry(data[0]);
+};
+whereAmI();
+console.log('FIRST');
