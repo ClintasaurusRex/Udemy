@@ -3,15 +3,6 @@
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
-// NEW COUNTRIES API URL (use instead of the URL shown in videos):
-// https://restcountries.com/v2/name/portugal
-// https://countries-api-836d.onrender.com/countries/
-// https://restcountries.com/v3.1/all
-
-// NEW REVERSE GEOCODING API URL (use instead of the URL shown in videos):
-// https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}
-
-///////////////////////////////////////
 const renderCountry = function (data, className = '') {
   const html = `<article class="country ${className}" >
   <img class="country__img" src="${data.flag}" />
@@ -27,8 +18,23 @@ const renderCountry = function (data, className = '') {
     </div>
     </article>`;
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  countriesContainer.style.opacity = 1;
+  // countriesContainer.style.opacity = 1;
 };
+
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  // countriesContainer.style.opacity = 1;
+};
+
+// NEW COUNTRIES API URL (use instead of the URL shown in videos):
+// https://restcountries.com/v2/name/portugal
+// https://countries-api-836d.onrender.com/countries/
+// https://restcountries.com/v3.1/all
+
+// NEW REVERSE GEOCODING API URL (use instead of the URL shown in videos):
+// https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}
+
+///////////////////////////////////////
 
 /*
 const getCountryAndNeighbour = function (country) {
@@ -92,7 +98,10 @@ getCountryAndNeighbour('portugal');
 const getCountryData = function (country) {
   // Country 1
   fetch(`https://restcountries.com/v2/name/${country}`) // fetchs data
-    .then(response => response.json()) // turns data into json
+    .then(response => {
+      console.log(response);
+      return response.json();
+    })
     .then(data => {
       renderCountry(data[0]);
       const neighbour = data[0].borders?.[0];
@@ -102,9 +111,16 @@ const getCountryData = function (country) {
     })
     .then(response => response.json())
     .then(data => renderCountry(data, 'neighbour'))
-    .catch(err => alert(err)); // this will catch any errors in the promise chain
+    .catch(err => {
+      console.error(`${err} 💥💥💥 `);
+      renderError(`Something went wrong 💥💥💥 ${err.message} Try Again.`);
+    }) // this will catch any errors in the promise chain
+    .finally(() => {
+      countriesContainer.style.opacity = 1; // make the data visable
+    });
 };
 
 btn.addEventListener('click', function () {
   getCountryData('portugal');
 });
+getCountryData('asdfasdfasdf');

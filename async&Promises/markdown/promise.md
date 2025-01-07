@@ -64,4 +64,35 @@ const getCountryData = function (country) {
     .then(data => renderCountry(data, 'neighbour'));
 };
 getCountryData('portugal');
+
+///////////////////////////////////////////////////////////////////
+// First catch error
+
+// Simplified version
+const getCountryData = function (country) {
+  // Country 1
+  fetch(`https://restcountries.com/v2/name/${country}`) // fetchs data
+    .then(response => response.json()) // turns data into json
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders?.[0];
+
+      // Country 2
+      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+    })
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'))
+    .catch(err => {
+      console.error(`${err} 💥💥💥 `);
+      renderError(`Something went wrong 💥💥💥 ${err.message} Try Again.`);
+    }) // this will catch any errors in the promise chain
+    .finally(() => {
+      countriesContainer.style.opacity = 1; // make the data visable
+    });
+};
+
+btn.addEventListener('click', function () {
+  getCountryData('portugal');
+});
+getCountryData('asdfasdfasdf');
 ```
